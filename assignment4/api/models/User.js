@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    favList: {
+      type: [String],
+  },
     isHost: {
       type: Boolean,
       default: false,

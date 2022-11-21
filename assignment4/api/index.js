@@ -4,7 +4,7 @@ import usersRoute from "./routes/users.js";
 import propertiesRoute from "./routes/properties.js";
 import reservationsRoute from "./routes/reservations.js";
 
-const db = "mongodb://localhost:27017/aspace";
+const db = "mongodb+srv://jeanchu:jeanchu@cluster0.y7gwfhm.mongodb.net/aspace?retryWrites=true&w=majority";
 const app = express();
 
 // connect to mongoDB

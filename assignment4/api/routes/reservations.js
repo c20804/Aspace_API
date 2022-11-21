@@ -4,11 +4,11 @@ import Property from "../models/Property.js";
 
 const router = express.Router();
 
-//CREATE (userID required)
-router.post("/:userID/:propertyID", async(req, res, next)=>{
+//CREATE (userid required in query)
+router.post("/:propertyID", async(req, res, next)=>{
     const propertyID = req.params.propertyID;
-    const userID = req.params.userID;
-    const newReservation = new Reservation({ date: new Date(req.body.date), userID:userID, propertyID:propertyID});
+    const userid = req.query.userid;
+    const newReservation = new Reservation({ date: new Date(req.body.date), userID:userid, propertyID:propertyID});
     try{
         const savedReservation = await newReservation.save();
         try {
@@ -65,11 +65,11 @@ router.get("/:id", async(req, res, next)=>{
     }
 });
 //GET ALL (userID required)
-router.get("/user/:userID", async(req, res, next)=>{
-    const userID = req.params.userID;
+router.get("/", async(req, res, next)=>{
+    const userid = req.query.userid;
     try{
         const reservations = await Reservation.find({
-            "userID" : userID
+            "userID" : userid
         });
         res.status(200).json(reservations);
     }catch(err){

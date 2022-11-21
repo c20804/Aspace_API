@@ -39,7 +39,14 @@ const PropertySchema = new mongoose.Schema({
     },
     unAvailable: {
         type: [Date],
-    }
+    },
+    comments: {
+        type: [String],
+    },
+    hostID:{
+        type: String,
+        // required: true,
+    },
 });
 
 export default mongoose.models.Property || mongoose.model("Property", PropertySchema)
